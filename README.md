@@ -13,7 +13,6 @@ This repository outlines the implementation of a real-time data streaming proces
 - [Usage](#usage)
 - [Improvements and Issues](#improvements-and-issues)
 - [Contributing](#contributing)
-- [License](#license)
 - [Acknowledgments](#acknowledgments)
 
 ## Project Overview
@@ -49,8 +48,8 @@ Structured in a modular approach, this project includes FastAPI setup, Lambda fu
 
 Invoke the deployed Lambda function through the API Gateway endpoint to initiate the ETL process and monitor the data streaming to Power BI.
 For more details take a look to my article:
-[Medium](URL)
-[Linkedin](URL)
+[Medium](https://medium.com/@jr.vera.ma/etl-encapsulation-in-aws-lambda-function-with-serverless-cloudformation-apigateway-docker-5b087f0023a9)
+[Linkedin](https://www.linkedin.com/pulse/etl-encapsulation-aws-lambda-function-serverless-api-vera-mara%C3%B1%C3%B3n-8zx7f/)
 
 
 ## Improvements and Issues
