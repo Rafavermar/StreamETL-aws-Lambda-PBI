@@ -1,0 +1,50 @@
+service: user-analytics-stream-service
+
+useDotenv: true
+
+provider:
+  name: aws
+  runtime: python3.9
+  region: eu-west-3
+  stage: dev
+  environment:
+    POWER_BI_URL: ${env:POWER_BI_URL}
+
+package:
+  patterns:
+    - '!venv/**'
+    - '!node_modules/**'
+    - '!.serverless/**'
+    - '!.DS_Store'
+    - '!fastapi_app'
+    - '!package.json'
+    - '!package-lock.json'
+    - 'extraction/**'
+    - 'transformation/**'
+    - 'powerbi/**'
+    - 'main.py'
+    - '.env'
+    - '!.gitignore'
+
+custom:
+  pythonRequirements:
+    dockerizePip: true
+    layer: true
+    bucket: my-python-dependencies-bucket
+    bucketKey: ${self:provider.stage}/requirements.zip
+  dotenv:
+      path: .env
+
+functions:
+  mainHandler:
+    handler: main.lambda_handler
+    memorySize: 3008
+    timeout: 900
+    events:
+      - http:
+          path: /userstream
+          method: post
+
+plugins:
+  - serverless-python-requirements
+  - serverless-dotenv-plugin
